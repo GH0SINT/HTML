@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{PAGE_TITLE}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+        Styles for layout, navigation, and password generator component.
+        Customize colors, fonts, and layout as needed.
+    -->
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-content img {
+            margin-bottom: 10px;
+        }
+        .header-content h1 {
+            margin: 0;
+            text-align: center;
+        }
+        nav ul, .footer-nav {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li, .footer-nav li {
+            margin: 0 10px;
+        }
+        .footer-nav li a, nav ul li a {
+            color: #00ffff;
+            border-radius: 4px;
+            padding: 6px 12px;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .footer-nav li a:hover, nav ul li a:hover,
+        .footer-nav li a:focus, nav ul li a:focus {
+            background: #222;
+            color: #ffff00;
+        }
+        footer p {
+            text-align: center;
+            margin: 0;
+        }
+        .footer-banner {
+            background: #000;
+            text-align: center;
+            padding: 0.5em 0;
+        }
+        .footer-banner img {
+            display: inline-block;
+            max-width: 100%;
+            height: 300px;
+        }
+        .pwgen-container {
+            margin: 3em auto;
+            max-width: 500px;
+            background: #111;
+            border-radius: 8px;
+            padding: 2em;
+            box-shadow: 0 0 16px #222;
+            text-align: center;
+        }
+        .pwgen-container input[type="number"] {
+            width: 60px;
+            background: #222;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 4px;
+        }
+        .pwgen-container input[type="text"] {
+            width: 300px;
+            background: #222;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 4px;
+            margin-left: 10px;
+        }
+        .pwgen-container button {
+            background: #00ffff;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .pwgen-container button:hover {
+            background: #ffff00;
+            color: #000;
+        }
+        label {
+            font-weight: bold;
+        }
+        .github-signature {
+            text-align: center;
+            margin-top: 1em;
+            color: #aaa;
+            font-size: 0.95em;
+        }
+        .github-signature a {
+            color: #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        HEADER SECTION
+        Replace {{BANNER_IMAGE}} with the path to your organization's banner/logo.
+        Replace {{TOOL_TITLE}} with your tool/page title.
+    -->
+    <header>
+        <div class="header-content">
+            <img src="{{BANNER_IMAGE}}" alt="{{ORGANIZATION_NAME}} Logo" style="height:300px;">
+            <h1>{{TOOL_TITLE}}</h1>
+        </div>
+    </header>
+    <!--
+        MAIN NAVIGATION
+        Replace href and link text as needed for your organization.
+    -->
+    <nav>
+        <ul>
+            <li><a href="{{HOME_LINK}}">Home</a></li>
+            <li><a href="{{PAGE1_LINK}}">Page 1</a></li>
+            <li><a href="{{PAGE2_LINK}}">Page 2</a></li>
+            <li><a href="{{PAGE3_LINK}}">Page 3</a></li>
+            <li><a href="{{RESOURCES_LINK}}">Resources</a></li>
+            <!-- Add more pages as needed -->
+        </ul>
+    </nav>
+    <!--
+        MAIN CONTENT AREA
+        Password generator component.
+    -->
+    <main>
+        <div class="pwgen-container">
+            <label for="pwlength">Password Length:</label>
+            <input type="number" id="pwlength" value="16" min="4" max="64">
+            <button onclick="generatePassword()">Generate Password</button>
+            <br><br>
+            <input type="text" id="password" readonly placeholder="Your password will appear here">
+        </div>
+        <script>
+        // Password generator function
+        function generatePassword() {
+            var length = document.getElementById('pwlength').value;
+            var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{};:,.<>?";
+            var retVal = "";
+            for (var i = 0, n = charset.length; i < length; ++i) {
+                retVal += charset.charAt(Math.floor(Math.random() * n));
+            }
+            document.getElementById('password').value = retVal;
+        }
+        </script>
+    </main>
+    <!--
+        FOOTER SECTION
+        Secondary navigation and legal information.
+        Update links and text as appropriate for your organization.
+    -->
+    <footer>
+        <nav>
+            <ul class="footer-nav">
+                <li><a href="{{ABOUT_LINK}}">About</a></li>
+                <li><a href="{{CONTACT_LINK}}">Contact</a></li>
+                <li><a href="{{LEGAL_LINK}}">Legal Notice</a></li>
+                <li><a href="{{CHANGELOG_LINK}}">Change Log</a></li>
+            </ul>
+        </nav>
+        <p>&copy; {{YEAR}} {{ORGANIZATION_NAME}}. All rights reserved.</p>
+        <!-- GitHub Signature Section -->
+        <div class="github-signature">
+            by gh0sint <a href="https://github.com/GH0SINT" target="_blank">[github.com/GH0SINT]</a>
+        </div>
+    </footer>
+    <!--
+        FOOTER BANNER
+        Replace {{FOOTER_BANNER_IMAGE}} with your organization's footer image.
+    -->
+    <div class="footer-banner">
+        <img src="{{FOOTER_BANNER_IMAGE}}" alt="Footer Banner" style="max-width:100%; height:300px;">
+    </div>
+</body>
+</html>
