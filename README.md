@@ -1,2 +1,2 @@
 # HTML
-HTML Templates for Projects.
+HTML Repository of Templates for Projects.
