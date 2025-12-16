@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{PAGE_TITLE}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+        Styles for the warning/notice page layout and elements.
+        Customize colors, fonts, and layout as needed.
+    -->
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .notice-container {
+            max-width: 700px;
+            background: #000;
+            border: 2px solid #ffcc00;
+            border-radius: 12px;
+            padding: 2em 2.5em;
+            box-shadow: 0 0 24px #000;
+            text-align: left;
+        }
+        .notice-title {
+            color: #ffcc00;
+            text-align: center;
+            font-size: 1.6em;
+            margin-bottom: 1em;
+            font-weight: bold;
+        }
+        .notice-list {
+            margin: 1.5em 0 1.5em 1.5em;
+        }
+        .accept-btn {
+            display: block;
+            margin: 2em auto 0 auto;
+            background: #ffcc00;
+            color: #222;
+            border: none;
+            border-radius: 6px;
+            padding: 0.8em 2.2em;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .accept-btn:hover, .accept-btn:focus {
+            background: #fff200;
+            color: #000;
+        }
+        @media (max-width: 600px) {
+            .notice-container {
+                padding: 1em;
+            }
+        }
+        .github-signature {
+            text-align: center;
+            margin-top: 1em;
+            color: #aaa;
+            font-size: 0.95em;
+        }
+        .github-signature a {
+            color: #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        Main container for the system notice.
+        Organization logo can be placed below.
+        Replace {{LOGO_IMAGE}} with your organization's logo file.
+    -->
+    <div class="notice-container">
+        <!-- Organization Logo Section (Generalized) -->
+        <div style="display:flex; justify-content:center; gap:30px; margin-bottom:1em;">
+            <img src="{{LOGO_IMAGE}}" alt="{{ORGANIZATION_NAME}} Logo" style="max-width:300px; max-height:100px;">
+        </div>
+        <!-- Notice Title Section -->
+        <div class="notice-title">
+            {{NOTICE_TITLE}}
+        </div>
+        <!-- System Description Section -->
+        <p>
+            {{SYSTEM_DESCRIPTION}}
+        </p>
+        <!-- Authorized Use Notice Section -->
+        <p>
+            {{AUTHORIZED_USE_NOTICE}}
+        </p>
+        <!-- Consent Notice Section -->
+        <p>{{CONSENT_NOTICE_INTRO}}</p>
+        <ul class="notice-list">
+            <li>
+                {{CONSENT_NOTICE_ITEM_1}}
+            </li>
+            <li>
+                {{CONSENT_NOTICE_ITEM_2}}
+            </li>
+            <li>
+                {{CONSENT_NOTICE_ITEM_3}}
+            </li>
+        </ul>
+        <!-- Restricted Processing Warning Section -->
+        <p style="color:#ff6666; font-weight:bold;">
+            {{RESTRICTED_PROCESSING_WARNING}}
+        </p>
+        <!-- Accept Button Section -->
+        <button class="accept-btn" onclick="window.location.href='{{ACCEPT_LINK}}'">Accept</button>
+        <!-- GitHub Signature Section -->
+        <div class="github-signature">
+            by gh0sint <a href="https://github.com/GH0SINT" target="_blank">[github.com/GH0SINT]</a>
+        </div>
+    </div>
+</body>
+</html>
